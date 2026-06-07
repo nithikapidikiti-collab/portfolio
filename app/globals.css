@@ -24,3 +24,20 @@ html { scroll-behavior: smooth; }
 .delay-4 { animation-delay: 0.55s; opacity: 0; }
 .spin-slow { animation: spin-slow 20s linear infinite; }
 .pulse-ring { animation: pulse-ring 2s ease-out infinite; }
+
+@media (max-width: 768px) {
+  nav div { display: none; }
+  
+  section[id="about"] {
+    grid-template-columns: 1fr !important;
+  }
+  
+  section[style*="grid-template-columns: 1fr 1fr"] {
+    grid-template-columns: 1fr !important;
+  }
+
+  a[style*="grid-template-columns: 80px"] {
+    grid-template-columns: 1fr !important;
+    gap: 8px;
+  }
+}

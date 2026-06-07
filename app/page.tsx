@@ -377,7 +377,6 @@ export default function Home() {
             Passionate about the architecture of IT systems — how networks are built, secured, and scaled. Currently on a competitive Co-op Scholarship at UTS.
           </p>
           <p style={{ fontSize: "14px", color: "rgba(255,255,255,0.35)", lineHeight: 1.8 }}>
-            Founder of HerOrigin, empowering young women in STEM. Co-founding a stealth AI startup. 1st place at the ANSTO National Hackathon.
           </p>
         </Fade>
         <Fade style={{ padding: "5rem 3rem" }}>
