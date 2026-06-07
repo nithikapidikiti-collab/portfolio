@@ -247,7 +247,7 @@ export default function Home() {
             Nithika<br />Pidikiti
           </h1>
           <p style={{ fontSize: "13px", color: "rgba(255,255,255,0.35)", lineHeight: 1.8, marginBottom: "2rem" }}>
-            UTS Co-op Scholar · Founder of HerOrigin · Data analytics & cybersecurity.
+            UTS Co-op Scholar
           </p>
           <div style={{ display: "flex", gap: "10px", flexWrap: "wrap" }}>
             {[{ l: "LinkedIn", u: "https://www.linkedin.com/in/nithika-pidikiti" }, { l: "GitHub", u: "https://github.com/nithikapidikiti-collab" }].map(b => (
