@@ -54,9 +54,9 @@ function NetworkGraph() {
       const start = idx; idx += items.length;
       for (let a = start; a < idx; a++)
         for (let b = a+1; b < idx; b++)
-          if (Math.random() < 0.45) edges.push([a, b, color]);
+          if (Math.random() < 0.2) edges.push([a, b, color]);
     });
-    for (let i = 0; i < 12; i++) {
+    for (let i = 0; i < 4; i++) {
       const a = Math.floor(Math.random()*nodes.length);
       const b = Math.floor(Math.random()*nodes.length);
       if (a !== b) edges.push([a, b, "rgba(255,255,255,0.04)"]);
@@ -74,7 +74,7 @@ function NetworkGraph() {
       edges.forEach(([a, b, col], i) => {
         const na = nodes[a], nb = nodes[b];
         const dist = Math.hypot(na.x-nb.x, na.y-nb.y);
-        const alpha = Math.max(0, 0.12 - dist/2800);
+        const alpha = Math.max(0, 0.06 - dist/2800);
         if (alpha <= 0) return;
         ctx.beginPath(); ctx.moveTo(na.x, na.y); ctx.lineTo(nb.x, nb.y);
         ctx.strokeStyle = col === "rgba(255,255,255,0.04)" ? col : col.replace(")", `,${alpha})`).replace("rgb(","rgba(");
@@ -96,7 +96,7 @@ function NetworkGraph() {
           ctx.beginPath(); ctx.arc(n.x, n.y, 28 + hov*20, 0, Math.PI*2); ctx.fillStyle = g; ctx.fill();
         }
         ctx.beginPath(); ctx.arc(n.x, n.y, n.r + hov*3, 0, Math.PI*2);
-        ctx.fillStyle = hov > 0.1 ? n.color : n.color + "99"; ctx.fill();
+        ctx.fillStyle = hov > 0.1 ? n.color : n.color + "55"; ctx.fill();
         ctx.font = `${hov > 0.3 ? 500 : 400} ${10 + hov*3}px system-ui,sans-serif`;
         ctx.fillStyle = hov > 0.3 ? "#fff" : "rgba(255,255,255,0.3)";
         ctx.fillText(n.label, n.x + n.r + 5, n.y + 4);
@@ -168,9 +168,11 @@ function Terminal() {
 }
 
 function Cursor() {
+  const [isMobile, setIsMobile] = useState(false);
   const dotRef = useRef<HTMLDivElement>(null);
   const ringRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
+    if (window.innerWidth < 768) { setIsMobile(true); return; }
     let rx = 0, ry = 0;
     const move = (e: MouseEvent) => {
       if (dotRef.current) { dotRef.current.style.left = e.clientX + "px"; dotRef.current.style.top = e.clientY + "px"; }
@@ -180,6 +182,7 @@ function Cursor() {
     window.addEventListener("mousemove", move); requestAnimationFrame(raf);
     return () => window.removeEventListener("mousemove", move);
   }, []);
+  if (isMobile) return null;
   return (
     <>
       <div ref={dotRef} style={{ position: "fixed", width: "5px", height: "5px", background: "#fff", borderRadius: "50%", pointerEvents: "none", zIndex: 9999, transform: "translate(-50%,-50%)", mixBlendMode: "difference" }} />
@@ -223,16 +226,16 @@ export default function Home() {
       <Cursor />
 
       {/* Nav */}
-      <nav style={{ position: "fixed", top: 0, left: 0, right: 0, zIndex: 50, display: "flex", alignItems: "center", justifyContent: "space-between", padding: "1.5rem 1.5rem", background: "rgba(12,12,12,0.9)", backdropFilter: "blur(16px)" }}>
-        <span style={{ fontSize: "13px", fontWeight: 500, letterSpacing: "0.02em" }}>Nithika Pidikiti</span>
-        <div style={{ display: "flex", gap: "1.5rem" }}>
-          {["About", "Projects", "Certifications", "Contact"].map(n => (
-            <a key={n} href={`#${n.toLowerCase()}`} style={{ fontSize: "11px", color: "rgba(255,255,255,0.35)", textDecoration: "none", letterSpacing: "0.1em", transition: "color 0.2s" }}
-              onMouseEnter={e => e.currentTarget.style.color = "#fff"}
-              onMouseLeave={e => e.currentTarget.style.color = "rgba(255,255,255,0.35)"}>{n.toUpperCase()}</a>
-          ))}
-        </div>
-      </nav>
+      <nav style={{ position: "fixed", top: 0, left: 0, right: 0, zIndex: 50, display: "flex", alignItems: "center", justifyContent: "space-between", padding: "1rem 1.5rem", background: "rgba(12,12,12,0.9)", backdropFilter: "blur(16px)", gap: "1rem" }}>
+  <span style={{ fontSize: "13px", fontWeight: 500, letterSpacing: "0.02em", flexShrink: 0 }}>NP</span>
+  <div style={{ display: "flex", gap: "1.25rem", overflowX: "auto", scrollbarWidth: "none" }}>
+    {["About", "Projects", "Certifications", "Contact"].map(n => (
+      <a key={n} href={`#${n.toLowerCase()}`} style={{ fontSize: "11px", color: "rgba(255,255,255,0.35)", textDecoration: "none", letterSpacing: "0.1em", transition: "color 0.2s", flexShrink: 0 }}
+        onMouseEnter={e => e.currentTarget.style.color = "#fff"}
+        onMouseLeave={e => e.currentTarget.style.color = "rgba(255,255,255,0.35)"}>{n.toUpperCase()}</a>
+    ))}
+  </div>
+</nav>
 
       {/* Hero */}
       <section style={{ height: "100vh", position: "relative", overflow: "hidden", display: "flex", flexDirection: "column", justifyContent: "flex-end", padding: "0 1.5rem 4rem" }}>
