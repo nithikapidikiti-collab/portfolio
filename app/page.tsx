@@ -202,12 +202,13 @@ function Fade({ children, style }: { children: React.ReactNode; style?: React.CS
 
 export default function Home() {
   const projects = [
-    { title: "Data analytics portfolio", desc: "Case studies in Excel, R, Tableau, and SQL.", tags: ["SQL", "R", "Tableau"], url: "https://sites.google.com/view/nithika-datanalytics-portfolio/home", num: "01" },
-    { title: "Cybersecurity portfolio", desc: "Security documentation and network design with Cisco Packet Tracer.", tags: ["NIST", "Linux", "Cisco"], url: "https://sites.google.com/view/nithika-cybersec-portfolio/home", num: "02" },
-    { title: "TCP chat server", desc: "Multi-client real-time chat built with raw Python sockets.", tags: ["Python", "TCP"], url: "https://github.com/nithikapidikiti-collab/tcp-chat-server", num: "03" },
-    { title: "Async port scanner", desc: "Concurrent port scanner scanning 1024 ports with asyncio.", tags: ["Python", "Asyncio"], url: "https://github.com/nithikapidikiti-collab/port-scanner", num: "04" },
-    { title: "HTTP intercepting proxy", desc: "Intercepts and logs live HTTP traffic in real time.", tags: ["Python", "HTTP"], url: "https://github.com/nithikapidikiti-collab/http-proxy", num: "05" },
-    { title: "Packet sniffer", desc: "Live network capture detecting real IoT and GitHub traffic.", tags: ["Scapy", "TCP"], url: "https://github.com/nithikapidikiti-collab/packet-sniffer", num: "06" },
+    { title: "DNS resolver", desc: "Resolves DNS from scratch in C — parses wire format, pointer compression, traces full chain from root servers.", tags: ["C", "DNS", "UDP"], url: "https://github.com/nithikapidikiti-collab/dns-resolver", num: "01" },
+    { title: "Data analytics portfolio", desc: "Case studies in Excel, R, Tableau, and SQL.", tags: ["SQL", "R", "Tableau"], url: "https://sites.google.com/view/nithika-datanalytics-portfolio/home", num: "02" },
+    { title: "Cybersecurity portfolio", desc: "Security documentation and network design with Cisco Packet Tracer.", tags: ["NIST", "Linux", "Cisco"], url: "https://sites.google.com/view/nithika-cybersec-portfolio/home", num: "03" },
+    { title: "TCP chat server", desc: "Multi-client real-time chat built with raw Python sockets.", tags: ["Python", "TCP"], url: "https://github.com/nithikapidikiti-collab/tcp-chat-server", num: "04" },
+    { title: "Async port scanner", desc: "Concurrent port scanner scanning 1024 ports with asyncio.", tags: ["Python", "Asyncio"], url: "https://github.com/nithikapidikiti-collab/port-scanner", num: "05" },
+    { title: "HTTP intercepting proxy", desc: "Intercepts and logs live HTTP traffic in real time.", tags: ["Python", "HTTP"], url: "https://github.com/nithikapidikiti-collab/http-proxy", num: "06" },
+    { title: "Packet sniffer", desc: "Live network capture detecting real IoT and GitHub traffic.", tags: ["Scapy", "TCP"], url: "https://github.com/nithikapidikiti-collab/packet-sniffer", num: "07" },
   ];
 
   const certs = [
@@ -282,8 +283,7 @@ export default function Home() {
         <section id="projects" style={{ borderTop: "1px solid rgba(255,255,255,0.06)" }}>
           <div style={{ padding: "3rem 1.5rem 2rem", display: "flex", justifyContent: "space-between", alignItems: "baseline" }}>
             <p style={{ fontSize: "10px", letterSpacing: "0.2em", color: "rgba(255,255,255,0.2)" }}>PROJECTS</p>
-            <p style={{ fontSize: "11px", color: "rgba(255,255,255,0.2)" }}>06 works</p>
-          </div>
+            <p style={{ fontSize: "11px", color: "rgba(255,255,255,0.2)" }}>07 works</p>          </div>
           {projects.map(p => (
             <a key={p.title} href={p.url} target="_blank" style={{ display: "flex", flexWrap: "wrap", gap: "8px", alignItems: "center", padding: "1.25rem 1.5rem", borderTop: "1px solid rgba(255,255,255,0.05)", textDecoration: "none", transition: "background 0.2s" }}
               onMouseEnter={e => e.currentTarget.style.background = "rgba(255,255,255,0.02)"}
